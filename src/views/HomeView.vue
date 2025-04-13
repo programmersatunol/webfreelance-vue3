@@ -1,6 +1,7 @@
 <script setup>
 import TheWelcome from '../components/TheWelcome.vue'
 import TestimonialSection from '../components/TestimonialSection.vue'
+import ClientLogoSection from '../components/ClientLogoSection.vue'
 </script>
 
 <template>
@@ -34,8 +35,9 @@ import TestimonialSection from '../components/TestimonialSection.vue'
       </div>
     </section>
 
-      <!-- Add the TestimonialSection component -->
-      <TestimonialSection />
+    <!-- Add the ClientLogoSection before or after TestimonialSection -->
+    <ClientLogoSection />
+    <TestimonialSection />
   </div>
   </main>
 </template>

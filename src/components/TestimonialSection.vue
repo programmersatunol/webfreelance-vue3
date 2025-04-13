@@ -43,11 +43,26 @@ const testimonials = [
     description: "Outstanding service and professional approach. They transformed our vision into reality perfectly.",
     image: "https://cdn-icons-png.flaticon.com/512/4042/4042356.png"
   },
+
   {
-    id: 4,
-    name: "James Wilson",
-    position: "Startup Founder",
-    description: "Their expertise in web development helped us launch our platform successfully. Highly recommended!",
+    id: 1,
+    name: "Sarah Johnson",
+    position: "CEO at TechStart",
+    description: "Working with this team has been an absolute pleasure. They delivered our project on time and exceeded our expectations.",
+    image: "https://cdn-icons-png.flaticon.com/512/4042/4042356.png"
+  },
+  {
+    id: 2,
+    name: "Michael Chen",
+    position: "Marketing Director",
+    description: "The attention to detail and creative solutions provided by the team helped us achieve our business goals.",
+    image: "https://cdn-icons-png.flaticon.com/512/4042/4042356.png"
+  },
+  {
+    id: 3,
+    name: "Emma Davis",
+    position: "Product Manager",
+    description: "Outstanding service and professional approach. They transformed our vision into reality perfectly.",
     image: "https://cdn-icons-png.flaticon.com/512/4042/4042356.png"
   },
 
@@ -72,13 +87,29 @@ const testimonials = [
     description: "Outstanding service and professional approach. They transformed our vision into reality perfectly.",
     image: "https://cdn-icons-png.flaticon.com/512/4042/4042356.png"
   },
+
   {
-    id: 4,
-    name: "James Wilson",
-    position: "Startup Founder",
-    description: "Their expertise in web development helped us launch our platform successfully. Highly recommended!",
+    id: 1,
+    name: "Sarah Johnson",
+    position: "CEO at TechStart",
+    description: "Working with this team has been an absolute pleasure. They delivered our project on time and exceeded our expectations.",
     image: "https://cdn-icons-png.flaticon.com/512/4042/4042356.png"
   },
+  {
+    id: 2,
+    name: "Michael Chen",
+    position: "Marketing Director",
+    description: "The attention to detail and creative solutions provided by the team helped us achieve our business goals.",
+    image: "https://cdn-icons-png.flaticon.com/512/4042/4042356.png"
+  },
+  {
+    id: 3,
+    name: "Emma Davis",
+    position: "Product Manager",
+    description: "Outstanding service and professional approach. They transformed our vision into reality perfectly.",
+    image: "https://cdn-icons-png.flaticon.com/512/4042/4042356.png"
+  },
+  
 ];
 
 const scroll = (direction) => {
