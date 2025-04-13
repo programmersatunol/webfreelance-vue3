@@ -1,5 +1,6 @@
 <script setup>
 import Navbar from './components/Navbar.vue'
+import WhatsAppButton from './components/WhatsAppButton.vue'
 </script>
 
 <template>
@@ -7,6 +8,7 @@ import Navbar from './components/Navbar.vue'
   <main class="main-content">
     <router-view></router-view>
   </main>
+  <WhatsAppButton phoneNumber="1234567890" message="Hello! I'd like to know more about your services." />
 </template>
 
 <style>
