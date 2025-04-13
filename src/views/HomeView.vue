@@ -1,8 +1,10 @@
 <script setup>
 import TheWelcome from '../components/TheWelcome.vue'
+import TestimonialSection from '../components/TestimonialSection.vue'
 </script>
 
 <template>
+  <main>
   <div class="home">
     <section class="hero">
       <div class="hero-content">
@@ -31,7 +33,11 @@ import TheWelcome from '../components/TheWelcome.vue'
         </div>
       </div>
     </section>
+
+      <!-- Add the TestimonialSection component -->
+      <TestimonialSection />
   </div>
+  </main>
 </template>
 
 <style scoped>
