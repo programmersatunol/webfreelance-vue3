@@ -38,7 +38,7 @@ import Partnerships from "./components/Partnerships.vue";
 export default {
     name: "App",
     components: {
-        Services, // Register the Services component
+        Services,
         GTranslate,
         Pricing,
         Partnerships

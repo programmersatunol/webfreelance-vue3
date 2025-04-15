@@ -50,14 +50,18 @@ export default {
 
 <style scoped>
 .services {
-  display: flex; /* Use flexbox */
-  flex-direction: column; /* Stack children vertically */
-  justify-content: center; /* Center items vertically */
-  align-items: center; /* Center items horizontally */
-  height: 100vh; /* Full viewport height */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh; /* Changed from height to min-height */
   padding: 40px 20px;
-  background-color: #f9f9f9; /* Light background color for the services section */
+  box-sizing: border-box;
+  background-color: #f9f9f9;
+  width: 100%;
+  overflow-x: hidden; /* Prevent horizontal scrolling */
 }
+
 
 .services-header {
   text-align: center; /* Center the text */
