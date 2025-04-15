@@ -3,12 +3,7 @@
         <h1 class="title">Shop</h1>
         <p class="subtitle">Temukan produk terbaik kami di sini.</p>
 
-        <input
-            type="text"
-            v-model="searchQuery"
-            placeholder="Cari produk..."
-            class="search-bar"
-        />
+        <input type="text" v-model="searchQuery" placeholder="Cari produk..." class="search-bar" />
 
         <div class="products-grid">
             <div v-for="product in paginatedProducts" :key="product.id" class="product-card">
@@ -18,9 +13,14 @@
                     <p class="product-price">Rp{{ product.price.toLocaleString() }}</p>
                     <p class="product-stock">Stok: {{ product.stock }}</p>
                 </div>
-                <button @click="addToCart(product)" class="add-to-cart">
-                    Tambah ke Keranjang
-                </button>
+                <div class="product-actions">
+                    <button @click="addToCart(product)" class="add-to-cart">
+                        Keranjang
+                    </button>
+                    <router-link :to="`/produk/${product.id}`" class="detail-button">
+                        Deskripsi
+                    </router-link>
+                </div>
             </div>
         </div>
 
@@ -42,7 +42,7 @@ export default {
             currentPage: 1,
             itemsPerPage: 8,
             products: [
-            {
+                {
                     id: 1,
                     name: "Produk A",
                     image: "https://img.icons8.com/?size=100&id=Of4lZV2lwBQI&format=png&color=000000",
@@ -168,6 +168,49 @@ export default {
 </script>
 
 <style scoped>
+/* card action */
+.product-actions {
+    display: flex;
+    justify-content: space-between;
+    border-top: 1px solid #eee;
+}
+
+.add-to-cart,
+.detail-button {
+    flex: 1;
+    text-align: center;
+    padding: 12px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    border: none;
+    border-right: 1px solid #eee;
+    background-color: #2a9d8f;
+    color: white;
+    transition: background-color 0.3s;
+}
+
+.detail-button {
+    background-color: #e9ecef;
+    color: #333;
+    border-left: none;
+    text-decoration: none;
+    border-radius: 0 0 16px 0;
+}
+
+.add-to-cart {
+    border-radius: 0 0 0 16px;
+}
+
+.add-to-cart:hover {
+    background-color: #21867a;
+}
+
+.detail-button:hover {
+    background-color: #d6d8db;
+}
+
+
 .page {
     max-width: 1200px;
     margin: 0 auto;
