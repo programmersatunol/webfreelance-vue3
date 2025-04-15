@@ -1,21 +1,107 @@
-<script setup>
-import Navbar from './components/Navbar.vue'
-import WhatsAppButton from './components/WhatsAppButton.vue'
-</script>
-
 <template>
-  <Navbar />
-  <main class="main-content">
-    <router-view></router-view>
-  </main>
-  <WhatsAppButton phoneNumber="1234567890" message="Hello! I'd like to know more about your services." />
+  <div id="app">
+    <section class="hero">
+      <div class="hero-content">
+        <h1>Selamat Datang di Konsultan SatuNol</h1>
+        <p>Mitra Solusi Digital Untuk Kebutuhan Teknologi Anda</p>
+        <button @click="getStarted">Ayo Mulai</button>
+      </div>
+    </section>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- WhatsApp button -->
+    <a
+      href="https://wa.me/085177778888?text=Halo, Saya ingin tanya layanan anda!"
+      target="_blank"
+      class="whatsapp-button"
+      aria-label="Chat with us on WhatsApp"
+    >
+      <i class="fab fa-whatsapp"></i>
+      <!-- Font Awesome WhatsApp icon -->
+    </a>
+  </div>
 </template>
 
-<style>
-@import './assets/main.css';
+<script>
+export default {
+  name: "App",
+  methods: {
+    getStarted() {
+      alert("kirim proposal anda ke satpam@satunoldigitalsolusi.web.id!");
+    },
+  },
+};
+</script>
 
-.main-content {
-  margin-top: 70px; /* Adjust based on navbar height */
-  min-height: calc(100vh - 70px);
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+#app {
+  font-family: Avenir, Helvetica, Arial, sans-serif;
+}
+
+.hero {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; /* Full viewport height */
+  background: linear-gradient(
+    to right,
+    #4facfe,
+    #00f2fe
+  ); /* Gradient background */
+  color: white;
+  text-align: center;
+  padding: 20px;
+}
+
+.hero h1 {
+  font-size: 3rem; /* Large font size for the heading */
+  margin-bottom: 1rem; /* Space below the heading */
+}
+
+.hero p {
+  font-size: 1.5rem; /* Medium font size for the paragraph */
+  margin-bottom: 2rem; /* Space below the paragraph */
+}
+
+.hero button {
+  padding: 10px 20px;
+  font-size: 1.2rem;
+  color: white;
+  background-color: #ff5722; /* Button color */
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.hero button:hover {
+  background-color: #e64a19; /* Darker shade on hover */
+}
+
+.whatsapp-button {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: #25d366; /* WhatsApp green color */
+  color: white;
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+  text-decoration: none;
+  font-size: 24px; /* Adjust icon size */
+}
+
+.whatsapp-button:hover {
+  background-color: #128c7e; /* Darker green on hover */
 }
 </style>
