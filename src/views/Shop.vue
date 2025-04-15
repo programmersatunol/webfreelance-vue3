@@ -3,10 +3,15 @@
         <h1 class="title">Shop</h1>
         <p class="subtitle">Temukan produk terbaik kami di sini.</p>
 
-        <input type="text" v-model="searchQuery" placeholder="Cari produk..." class="search-bar" />
+        <input
+            type="text"
+            v-model="searchQuery"
+            placeholder="Cari produk..."
+            class="search-bar"
+        />
 
         <div class="products-grid">
-            <div v-for="product in filteredProducts" :key="product.id" class="product-card">
+            <div v-for="product in paginatedProducts" :key="product.id" class="product-card">
                 <img :src="product.image" :alt="product.name" class="product-image" />
                 <div class="product-info">
                     <h2 class="product-name">{{ product.name }}</h2>
@@ -18,6 +23,13 @@
                 </button>
             </div>
         </div>
+
+        <!-- Pagination Controls -->
+        <div class="pagination">
+            <button @click="prevPage" :disabled="currentPage === 1">Prev</button>
+            <span>Halaman {{ currentPage }} dari {{ totalPages }}</span>
+            <button @click="nextPage" :disabled="currentPage === totalPages">Next</button>
+        </div>
     </div>
 </template>
 
@@ -27,8 +39,10 @@ export default {
     data() {
         return {
             searchQuery: "",
+            currentPage: 1,
+            itemsPerPage: 8,
             products: [
-                {
+            {
                     id: 1,
                     name: "Produk A",
                     image: "https://img.icons8.com/?size=100&id=Of4lZV2lwBQI&format=png&color=000000",
@@ -118,16 +132,36 @@ export default {
     },
     computed: {
         filteredProducts() {
-            return this.products
-                .filter((product) =>
-                    product.name.toLowerCase().includes(this.searchQuery.toLowerCase())
-                )
-                .slice(0, 8);
+            return this.products.filter(product =>
+                product.name.toLowerCase().includes(this.searchQuery.toLowerCase())
+            );
+        },
+        totalPages() {
+            return Math.ceil(this.filteredProducts.length / this.itemsPerPage);
+        },
+        paginatedProducts() {
+            const start = (this.currentPage - 1) * this.itemsPerPage;
+            return this.filteredProducts.slice(start, start + this.itemsPerPage);
+        }
+    },
+    watch: {
+        searchQuery() {
+            this.currentPage = 1; // Reset to first page on search
         }
     },
     methods: {
         addToCart(product) {
             alert(`Produk ${product.name} ditambahkan ke keranjang.`);
+        },
+        nextPage() {
+            if (this.currentPage < this.totalPages) {
+                this.currentPage++;
+            }
+        },
+        prevPage() {
+            if (this.currentPage > 1) {
+                this.currentPage--;
+            }
         }
     }
 };
@@ -228,5 +262,33 @@ export default {
 
 .add-to-cart:hover {
     background-color: #21867a;
+}
+
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 32px;
+    gap: 16px;
+}
+
+.pagination button {
+    padding: 8px 16px;
+    font-size: 14px;
+    border: none;
+    border-radius: 6px;
+    background-color: #2a9d8f;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.pagination button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
+.pagination span {
+    font-size: 14px;
 }
 </style>
