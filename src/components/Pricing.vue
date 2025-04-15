@@ -77,12 +77,18 @@ export default {
 </script>
 
 <style scoped>
+
+@media (min-width: 800px) {
+  .pricing {
+    height: 100vh;
+  }
+}
+
 .pricing {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 100vh; /* Full viewport height */
   padding: 40px 20px;
   background-color: #00ffdd; /* Light background color */
 }
