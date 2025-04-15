@@ -22,13 +22,21 @@
             <i class="fab fa-whatsapp"></i>
         </a>
 
+        <!-- Include the GTranslate component -->
+        <GTranslate />
+
         <router-view />
     </div>
 </template>
 
 <script>
+import GTranslate from './components/GTranslate.vue';
+
 export default {
     name: "App",
+    components: {
+        GTranslate
+    },
     data() {
         return {
             isMenuOpen: false

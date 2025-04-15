@@ -10,8 +10,7 @@
             </div>
         </section>
 
-        <!-- Include the GTranslate component -->
-        <GTranslate />
+        
 
         <!-- Include the Services component -->
         <Services />
