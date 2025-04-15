@@ -39,14 +39,14 @@
         </button>
       </div>
       
-      <div class="scroll-indicators" v-if="logos.length > visibleCount">
+      <!-- <div class="scroll-indicators" v-if="logos.length > visibleCount">
         <span 
           v-for="i in Math.ceil((logos.length - visibleCount + 1) / scrollStep)" 
           :key="i-1"
           :class="['indicator', { active: Math.floor(currentIndex / scrollStep) === i-1 }]"
           @click="goToIndex((i-1) * scrollStep)"
         ></span>
-      </div>
+      </div> -->
     </div>
   </section>
 </template>
@@ -109,25 +109,25 @@ export default {
       this.currentIndex = Math.min(index, this.logos.length - this.visibleCount);
     },
     updateVisibleCount() {
-      const width = window.innerWidth;
-      if (width < this.breakpoints.small) {
-        this.visibleCount = 1; // Show 1 logo on small screens
-        this.scrollStep = 1;
-      } else if (width < this.breakpoints.medium) {
-        this.visibleCount = 2; // Show 2 logos on medium screens
-        this.scrollStep = 2;
-      } else if (width < this.breakpoints.large) {
-        this.visibleCount = 3; // Show 3 logos on large screens
-        this.scrollStep = 3;
-      } else {
-        this.visibleCount = 5; // Show 5 logos on extra large screens
-        this.scrollStep = 3;
-      }
+      // const width = window.innerWidth;
+      // if (width < this.breakpoints.small) {
+      //   this.visibleCount = 1; // Show 1 logo on small screens
+      //   this.scrollStep = 1;
+      // } else if (width < this.breakpoints.medium) {
+      //   this.visibleCount = 2; // Show 2 logos on medium screens
+      //   this.scrollStep = 2;
+      // } else if (width < this.breakpoints.large) {
+      //   this.visibleCount = 3; // Show 3 logos on large screens
+      //   this.scrollStep = 3;
+      // } else {
+      //   this.visibleCount = 5; // Show 5 logos on extra large screens
+      //   this.scrollStep = 3;
+      // }
       
-      // Ensure currentIndex is valid after resizing
-      if (this.currentIndex + this.visibleCount > this.logos.length) {
-        this.currentIndex = Math.max(0, this.logos.length - this.visibleCount);
-      }
+      // // Ensure currentIndex is valid after resizing
+      // if (this.currentIndex + this.visibleCount > this.logos.length) {
+      //   this.currentIndex = Math.max(0, this.logos.length - this.visibleCount);
+      // }
     }
   },
   mounted() {
@@ -142,9 +142,14 @@ export default {
 
 <style scoped>
 .client-logo-section {
+  height: 100vh;
+  display: flex; /* Required for align-items to work */
+  align-items: center; /* Vertically centers children */
+  justify-content: center; /* Optional: horizontally center children */
   padding: 4rem 0;
-  background-color: var(--background-light);
+  background-color: darkcyan;
 }
+
 
 .section-title {
   text-align: center;

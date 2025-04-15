@@ -1,44 +1,59 @@
 <script setup>
-import TheWelcome from '../components/TheWelcome.vue'
-import TestimonialSection from '../components/TestimonialSection.vue'
-import ClientLogoSection from '../components/ClientLogoSection.vue'
+import TestimonialSection from "../components/TestimonialSection.vue";
+import ClientLogoSection from "../components/ClientLogoSection.vue";
 </script>
 
 <template>
   <main>
-  <div class="home">
-    <section class="hero">
-      <div class="hero-content">
-        <h1 class="hero-title">Welcome to <span class="highlight">YourBrand</span></h1>
-        <p class="hero-subtitle">Creating amazing digital experiences</p>
-        <router-link to="/contact" class="cta-button">Get Started</router-link>
-      </div>
-    </section>
+    <div class="home">
+      <section class="hero">
+        <div class="hero-content">
+          <h1 class="hero-title">
+            Welcome to <span class="highlight">YourBrand</span>
+          </h1>
+          <p class="hero-subtitle">Creating amazing digital experiences</p>
+          <router-link to="/contact" class="cta-button">Get Started</router-link>
+        </div>
+      </section>
 
-    <section class="features">
-      <div class="container">
-        <h2 class="section-title">What We Offer</h2>
-        <div class="features-grid">
-          <div class="feature-card">
-            <h3>Web Design</h3>
-            <p>Beautiful and responsive websites that engage your audience</p>
-          </div>
-          <div class="feature-card">
-            <h3>Development</h3>
-            <p>Custom web applications built with modern technologies</p>
-          </div>
-          <div class="feature-card">
-            <h3>SEO</h3>
-            <p>Optimize your online presence for better visibility</p>
+      <section class="features">
+        <div class="container">
+          <h2 class="section-title">What We Offer</h2>
+          <div class="features-grid">
+            <div class="feature-card">
+              <h3>Web Design</h3>
+              <p>Beautiful and responsive websites that engage your audience</p>
+            </div>
+            <div class="feature-card">
+              <h3>Development</h3>
+              <p>Custom web applications built with modern technologies</p>
+            </div>
+            <div class="feature-card">
+              <h3>SEO</h3>
+              <p>Optimize your online presence for better visibility</p>
+            </div>
+            <div class="feature-card">
+              <h3>Branding</h3>
+              <p>
+                Create a strong brand identity to stand out from competitors
+              </p>
+            </div>
+            <div class="feature-card">
+              <h3>Content Strategy</h3>
+              <p>Plan and deliver content that drives results</p>
+            </div>
+            <div class="feature-card">
+              <h3>Support & Maintenance</h3>
+              <p>Ongoing support to keep your site secure and updated</p>
+            </div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
 
-    <!-- Add the ClientLogoSection before or after TestimonialSection -->
-    <ClientLogoSection />
-    <TestimonialSection />
-  </div>
+      <!-- Add the ClientLogoSection before or after TestimonialSection -->
+      <ClientLogoSection />
+      <TestimonialSection />
+    </div>
   </main>
 </template>
 
@@ -94,8 +109,18 @@ import ClientLogoSection from '../components/ClientLogoSection.vue'
 }
 
 .features {
+  height: 100vh;
+  /* Full screen height */
+  display: flex;
+  /* Enable flexbox */
+  align-items: center;
+  /* Vertical centering */
+  justify-content: center;
+  /* Horizontal centering */
   padding: 4rem 2rem;
   background-color: #f9fafb;
+  box-sizing: border-box;
+  /* Ensure padding doesn't overflow */
 }
 
 .container {
@@ -112,8 +137,37 @@ import ClientLogoSection from '../components/ClientLogoSection.vue'
 
 .features-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-template-columns: repeat(3, 1fr);
+  /* 3 cards per row */
   gap: 2rem;
+  margin-top: 2rem;
+}
+
+@media (max-width: 768px) {
+  .features-grid {
+    grid-template-columns: repeat(2, 1fr);
+    /* 2 per row on tablets */
+  }
+}
+
+@media (max-width: 480px) {
+  .features-grid {
+    grid-template-columns: 1fr;
+    /* 1 per row on small screens */
+  }
+}
+
+.feature-card {
+  background-color: #fff;
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  text-align: center;
+  transition: transform 0.2s ease;
+}
+
+.feature-card:hover {
+  transform: translateY(-5px);
 }
 
 .feature-card {
