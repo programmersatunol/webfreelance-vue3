@@ -39,20 +39,9 @@ const logos = [
     'https://img.icons8.com/?size=100&id=115213&format=png&color=000000',
     'https://img.icons8.com/?size=100&id=117565&format=png&color=000000',
     'https://img.icons8.com/?size=100&id=LK5oP5g68tui&format=png&color=000000',
-    'https://img.icons8.com/?size=100&id=115213&format=png&color=000000',
-    'https://img.icons8.com/?size=100&id=115213&format=png&color=000000',
+    'https://img.icons8.com/?size=100&id=115213&format=png&color=660D0D',
+    'https://img.icons8.com/?size=100&id=115213&format=png&color=20C997',
 
-    'https://img.icons8.com/?size=100&id=115213&format=png&color=000000',
-    'https://img.icons8.com/?size=100&id=117565&format=png&color=000000',
-    'https://img.icons8.com/?size=100&id=LK5oP5g68tui&format=png&color=000000',
-    'https://img.icons8.com/?size=100&id=115213&format=png&color=000000',
-    'https://img.icons8.com/?size=100&id=115213&format=png&color=000000',
-
-    'https://img.icons8.com/?size=100&id=115213&format=png&color=000000',
-    'https://img.icons8.com/?size=100&id=117565&format=png&color=000000',
-    'https://img.icons8.com/?size=100&id=LK5oP5g68tui&format=png&color=000000',
-    'https://img.icons8.com/?size=100&id=115213&format=png&color=000000',
-    'https://img.icons8.com/?size=100&id=115213&format=png&color=000000',
     // Add more logos here
 ]
 
