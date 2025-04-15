@@ -23,6 +23,8 @@
       <i class="fab fa-whatsapp"></i>
     </a>
 
+    <GTranslate /> <!-- Include the GTranslate component -->
+
     <!-- Include the Services component -->
     <Services />
   </div>
@@ -30,11 +32,13 @@
 
 <script>
 import Services from "./components/Services.vue"; // Import the Services component
+import GTranslate from './components/GTranslate.vue'; // Import the GTranslate component
 
 export default {
   name: "App",
   components: {
     Services, // Register the Services component
+    GTranslate,
   },
   methods: {
     getStarted() {
