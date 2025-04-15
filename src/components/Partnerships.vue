@@ -35,9 +35,10 @@ const logos = [
   'https://www.malomatia.com/wp-content/uploads/malomatia-logo.png',
   'https://paramountassure.com/wp-content/themes/paramount/images/logo-footer.png',
   'https://hamtinfotech.com/wp-content/uploads/2025/03/hamtinfotech-logo-color.png',
+
   'https://img.icons8.com/?size=100&id=115213&format=png&color=000000',
-  'https://img.icons8.com/?size=100&id=117565&format=png&color=000000',
-  'https://img.icons8.com/?size=100&id=LK5oP5g68tui&format=png&color=000000',
+  'https://img.icons8.com/?size=100&id=115213&format=png&color=FCC419',
+  'https://img.icons8.com/?size=100&id=115213&format=png&color=94D82D',
   'https://img.icons8.com/?size=100&id=115213&format=png&color=660D0D',
   'https://img.icons8.com/?size=100&id=115213&format=png&color=20C997',
 ]
