@@ -82,135 +82,130 @@ onBeforeUnmount(() => {
 
 
 <style scoped>
-/* Full screen wrapper and centering */
 .logo-carousel-wrapper {
-    height: 50vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background: #f9f9f9;
-    padding: 20px;
+  height: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #f9f9f9;
+  padding: 20px;
+  box-sizing: border-box;
+  width: 100%;
 }
 
-/* Centered content layout */
 .logo-carousel-content {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  width: 100%;
 }
 
-/* Header section */
 .logo-carousel-header {
-    margin-bottom: 20px;
+  margin-bottom: 20px;
 }
 
 .logo-carousel-header h1 {
-    font-size: 2rem;
-    margin: 0;
+  font-size: 2rem;
+  margin: 0;
 }
 
 .logo-carousel-header p {
-    font-size: 1rem;
-    margin: 0;
-    color: #666;
+  font-size: 1rem;
+  margin: 0;
+  color: #666;
 }
 
-/* Carousel layout */
 .logo-carousel {
-    display: flex;
-    align-items: center;
-    width: 100%;
-    max-width: 1000px;
-    padding: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  max-width: 1000px;
+  padding: 10px;
+  box-sizing: border-box;
 }
 
-/* Scroll container */
 .logo-container {
-    overflow: hidden;
-    flex: 1;
+  overflow: hidden;
+  flex: 1;
 }
 
-/* Scrolling slider */
 .logo-slider {
-    display: flex;
-    transition: transform 0.5s ease;
+  display: flex;
+  transition: transform 0.5s ease;
 }
 
-/* Each page (set of logos) */
 .logo-page {
-    display: flex;
-    flex: 0 0 100%;
-    justify-content: space-around;
-    align-items: center;
+  display: flex;
+  flex: 0 0 100%;
+  justify-content: space-around;
+  align-items: center;
+  flex-wrap: wrap;
 }
 
-/* Logo styling */
 .logo {
-    flex: 1;
-    padding: 10px;
-    text-align: center;
+  flex: 1;
+  padding: 10px;
+  text-align: center;
 }
 
 .logo img {
-    max-width: 100px;
-    max-height: 70px;
-    object-fit: contain;
+  max-width: 120px;
+  max-height: 80px;
+  object-fit: contain;
 }
 
-/* Navigation buttons */
 button {
-    font-size: 2rem;
-    background: none;
-    border: none;
-    cursor: pointer;
-    padding: 0 10px;
+  font-size: 2rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0 10px;
 }
 
 button:disabled {
-    opacity: 0.3;
-    cursor: not-allowed;
+  opacity: 0.3;
+  cursor: not-allowed;
 }
 
-/* Responsive styles for mobile */
+/* Mobile styles */
 @media (max-width: 768px) {
-    .logo-carousel-wrapper {
-        height: auto;
-        padding: 40px 10px;
-    }
+  .logo-carousel-wrapper {
+    padding: 40px 10px;
+  }
 
-    .logo-carousel-header h1 {
-        font-size: 1.5rem;
-    }
+  .logo-carousel-header h1 {
+    font-size: 1.5rem;
+  }
 
-    .logo-carousel-header p {
-        font-size: 0.9rem;
-    }
+  .logo-carousel-header p {
+    font-size: 0.9rem;
+  }
 
-    .logo-carousel {
-        flex-direction: column;
-    }
+  .logo-carousel {
+    flex-direction: row; /* keep buttons inline */
+  }
 
-    .logo-page {
-        flex-wrap: wrap;
-        gap: 10px;
-    }
+  .logo-page {
+    justify-content: center;
+    gap: 20px;
+  }
 
-    .logo {
-        flex: 0 0 50%;
-        /* Show 2 logos per row on mobile */
-        padding: 10px 5px;
-    }
+  .logo {
+    flex: 0 0 100%;
+    padding: 10px 0;
+  }
 
-    .logo img {
-        max-width: 80px;
-        max-height: 60px;
-    }
+  .logo img {
+    max-width: 150px;
+    max-height: 100px;
+  }
 
-    button {
-        font-size: 1.5rem;
-        padding: 5px;
-    }
+  button {
+    font-size: 2rem;
+    padding: 0 5px;
+  }
 }
+
 </style>
