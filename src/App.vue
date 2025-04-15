@@ -27,18 +27,23 @@
 
     <!-- Include the Services component -->
     <Services />
+
+     <!-- Include the Pricing component -->
+     <Pricing />
   </div>
 </template>
 
 <script>
-import Services from "./components/Services.vue"; // Import the Services component
-import GTranslate from './components/GTranslate.vue'; // Import the GTranslate component
+import Services from "./components/Services.vue";
+import GTranslate from './components/GTranslate.vue';
+import Pricing from "./components/Pricing.vue";
 
 export default {
   name: "App",
   components: {
     Services, // Register the Services component
     GTranslate,
+    Pricing
   },
   methods: {
     getStarted() {
