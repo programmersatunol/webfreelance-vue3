@@ -30,6 +30,12 @@
 import { ref, computed } from 'vue'
 
 const logos = [
+    'https://barqoftech.com/wp-content/uploads/2025/03/NewBarqBigLogo.png',
+    'https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=466,fit=crop,q=95/mjE2zOMe3GhvKa6L/ouuuu-YNqJDE4V2wc2EGB0.webp',
+    'https://www.malomatia.com/wp-content/uploads/malomatia-logo.png',
+    'https://paramountassure.com/wp-content/themes/paramount/images/logo-footer.png',
+    'https://hamtinfotech.com/wp-content/uploads/2025/03/hamtinfotech-logo-color.png',
+
     'https://img.icons8.com/?size=100&id=115213&format=png&color=000000',
     'https://img.icons8.com/?size=100&id=117565&format=png&color=000000',
     'https://img.icons8.com/?size=100&id=LK5oP5g68tui&format=png&color=000000',
