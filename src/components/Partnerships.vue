@@ -2,8 +2,8 @@
     <div class="logo-carousel-wrapper">
         <div class="logo-carousel-content">
             <div class="logo-carousel-header">
-                <h1>Our Trusted Partners</h1>
-                <p>We proudly work with these amazing companies</p>
+                <h1>Mitra Kami</h1>
+                <p>Sebuah kebanggaan atas kepercayaan dan dedikasi terbaik</p>
             </div>
 
             <div class="logo-carousel">
