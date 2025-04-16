@@ -1,7 +1,11 @@
 <template>
     <div id="app">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
-        
+
+        <div v-if="isDevelopment" class="dev-banner">
+            🚧 Development Mode - Localhost - <a target="_blank" href="https://satunoldigitalsolusi.web.id">Check Live Site</a>
+        </div>
+
         <!-- Navbar -->
         <nav class="navbar">
             <div class="navbar-container">
@@ -39,6 +43,11 @@ export default {
     components: {
         GTranslate
     },
+    computed: {
+        isDevelopment() {
+            return process.env.NODE_ENV === 'development';
+        }
+    },
     data() {
         return {
             isMenuOpen: false
@@ -54,6 +63,24 @@ export default {
 
 
 <style>
+.dev-banner {
+    background-color: #ff9800;
+    color: white;
+    text-align: center;
+    padding: 8px;
+    font-weight: bold;
+    font-size: 14px;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+}
+
+body {
+    padding-top: 40px;
+    /* Offset for the fixed banner */
+}
+
 /* navbar */
 .navbar {
     background-color: white;
