@@ -2,8 +2,8 @@
     <div id="app">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
 
-        <div v-if="isDevelopment" class="dev-banner">
-            🚧 Development Mode - Localhost - <a target="_blank" href="https://satunoldigitalsolusi.web.id">Check Live Site</a>
+        <div :class="['env-banner', bannerClass]">
+            {{ bannerText }}
         </div>
 
         <!-- Navbar -->
@@ -46,6 +46,14 @@ export default {
     computed: {
         isDevelopment() {
             return process.env.NODE_ENV === 'development';
+        },
+        bannerClass() {
+            return this.isDevelopment ? 'dev' : 'prod';
+        },
+        bannerText() {
+            return this.isDevelopment
+                ? '🚧 Development Mode - Localhost'
+                : '✅ Production Mode - Live';
         }
     },
     data() {
@@ -63,22 +71,29 @@ export default {
 
 
 <style>
-.dev-banner {
-    background-color: #ff9800;
-    color: white;
+.env-banner {
     text-align: center;
-    padding: 8px;
-    font-weight: bold;
+    padding: 10px;
     font-size: 14px;
+    font-weight: bold;
+    color: white;
     position: fixed;
     top: 0;
     width: 100%;
-    z-index: 1000;
+    z-index: 999;
+}
+
+.env-banner.dev {
+    background-color: #ff9800;
+}
+
+.env-banner.prod {
+    background-color: #4caf50;
 }
 
 body {
-    padding-top: 40px;
-    /* Offset for the fixed banner */
+    margin-top: 40px;
+    /* Adjust if needed */
 }
 
 /* navbar */
