@@ -1,7 +1,6 @@
 <template>
     <div id="app">
         
-
         <section class="hero">
             <div class="hero-content">
                 <h1>Selamat Datang di Konsultan SatuNol</h1>
@@ -9,8 +8,6 @@
                 <button @click="getStarted">Ayo Mulai</button>
             </div>
         </section>
-
-        
 
         <!-- Include the Services component -->
         <Services />
@@ -62,8 +59,8 @@ export default {
     height: 100vh;
     /* Full viewport height */
     background: linear-gradient(to right,
-            #4facfe,
-            #00f2fe);
+            #1ce257,
+            #00ff91);
     /* Gradient background */
     color: white;
     text-align: center;
