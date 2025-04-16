@@ -1,32 +1,33 @@
 <template>
-	<SectionHeading title="Portfolio Terbaik"
-		subtitle="Cerminan komitmen kami terhadap kualitas dan inovasi." />
+	<SectionHeading title="Portfolio Terbaik" subtitle="Cerminan komitmen kami terhadap kualitas dan inovasi." />
 
 
-	<div class="page">
-		<h1 class="title">Portfolio</h1>
-		<p class="subtitle">Ini adalah halaman portfolio kami.</p>
+	<section class="section-container">
+		<div class="page">
+			<h1 class="title">Portfolio</h1>
+			<p class="subtitle">Ini adalah halaman portfolio kami.</p>
 
-		<input v-model="searchQuery" type="text" class="search-input" placeholder="Cari project..." />
+			<input v-model="searchQuery" type="text" class="search-input" placeholder="Cari project..." />
 
-		<div class="portfolio-grid">
-			<div v-for="item in paginatedItems" :key="item.id + '-' + item.title" class="portfolio-card">
-				<img :src="item.image" :alt="item.title" class="portfolio-image" />
-				<div class="portfolio-content">
-					<h3 class="portfolio-title">{{ item.title }}</h3>
-					<a :href="item.link" class="portfolio-link">Lihat Selengkapnya</a>
+			<div class="portfolio-grid">
+				<div v-for="item in paginatedItems" :key="item.id + '-' + item.title" class="portfolio-card">
+					<img :src="item.image" :alt="item.title" class="portfolio-image" />
+					<div class="portfolio-content">
+						<h3 class="portfolio-title">{{ item.title }}</h3>
+						<a :href="item.link" class="portfolio-link">Lihat Selengkapnya</a>
+					</div>
 				</div>
 			</div>
-		</div>
 
-		<div class="pagination" v-if="totalPages > 1">
-			<button @click="prevPage" :disabled="currentPage === 1">Prev</button>
-			<span>Halaman {{ currentPage }} dari {{ totalPages }}</span>
-			<button @click="nextPage" :disabled="currentPage === totalPages">
-				Next
-			</button>
+			<div class="pagination" v-if="totalPages > 1">
+				<button @click="prevPage" :disabled="currentPage === 1">Prev</button>
+				<span>Halaman {{ currentPage }} dari {{ totalPages }}</span>
+				<button @click="nextPage" :disabled="currentPage === totalPages">
+					Next
+				</button>
+			</div>
 		</div>
-	</div>
+	</section>
 </template>
 
 <script>
@@ -141,6 +142,10 @@ export default {
 </script>
 
 <style scoped>
+.section-container {
+	background-color: beige;
+}
+
 .page {
 	max-width: 1200px;
 	margin: 0 auto;

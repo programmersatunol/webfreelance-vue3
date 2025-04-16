@@ -2,38 +2,40 @@
 
     <SectionHeading title="Dagangan Kami" subtitle="Berkualitas, terjangkau, cepat, dan terpercaya." />
 
-    <div class="page">
-        <h1 class="title">Shop</h1>
-        <p class="subtitle">Temukan produk terbaik kami di sini.</p>
+    <section class="section-container">
+        <div class="page">
+            <h1 class="title">Shop</h1>
+            <p class="subtitle">Temukan produk terbaik kami di sini.</p>
 
-        <input type="text" v-model="searchQuery" placeholder="Cari produk..." class="search-bar" />
+            <input type="text" v-model="searchQuery" placeholder="Cari produk..." class="search-bar" />
 
-        <div class="products-grid">
-            <div v-for="product in paginatedProducts" :key="product.id" class="product-card">
-                <img :src="product.image" :alt="product.name" class="product-image" />
-                <div class="product-info">
-                    <h2 class="product-name">{{ product.name }}</h2>
-                    <p class="product-price">Rp{{ product.price.toLocaleString() }}</p>
-                    <p class="product-stock">Stok: {{ product.stock }}</p>
-                </div>
-                <div class="product-actions">
-                    <button @click="addToCart(product)" class="add-to-cart">
-                        Keranjang
-                    </button>
-                    <router-link :to="`/produk/${product.id}`" class="detail-button">
-                        Deskripsi
-                    </router-link>
+            <div class="products-grid">
+                <div v-for="product in paginatedProducts" :key="product.id" class="product-card">
+                    <img :src="product.image" :alt="product.name" class="product-image" />
+                    <div class="product-info">
+                        <h2 class="product-name">{{ product.name }}</h2>
+                        <p class="product-price">Rp{{ product.price.toLocaleString() }}</p>
+                        <p class="product-stock">Stok: {{ product.stock }}</p>
+                    </div>
+                    <div class="product-actions">
+                        <button @click="addToCart(product)" class="add-to-cart">
+                            Keranjang
+                        </button>
+                        <router-link :to="`/produk/${product.id}`" class="detail-button">
+                            Deskripsi
+                        </router-link>
+                    </div>
                 </div>
             </div>
-        </div>
 
-        <!-- Pagination Controls -->
-        <div class="pagination">
-            <button @click="prevPage" :disabled="currentPage === 1">Prev</button>
-            <span>Halaman {{ currentPage }} dari {{ totalPages }}</span>
-            <button @click="nextPage" :disabled="currentPage === totalPages">Next</button>
+            <!-- Pagination Controls -->
+            <div class="pagination">
+                <button @click="prevPage" :disabled="currentPage === 1">Prev</button>
+                <span>Halaman {{ currentPage }} dari {{ totalPages }}</span>
+                <button @click="nextPage" :disabled="currentPage === totalPages">Next</button>
+            </div>
         </div>
-    </div>
+    </section>
 </template>
 
 <script>
@@ -176,6 +178,10 @@ export default {
 </script>
 
 <style scoped>
+.section-container {
+    background-color: beige;
+}
+
 /* card action */
 .product-actions {
     display: flex;
@@ -241,13 +247,13 @@ export default {
 
 .search-bar {
     width: 100%;
-	padding: 12px 16px;
-	font-size: 16px;
-	border-radius: 8px;
-	border: 1px solid #ccc;
-	margin-bottom: 24px;
-	outline: none;
-	transition: border-color 0.3s;
+    padding: 12px 16px;
+    font-size: 16px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    margin-bottom: 24px;
+    outline: none;
+    transition: border-color 0.3s;
 }
 
 .products-grid {
