@@ -1,13 +1,20 @@
 <template>
-    <div class="page">
-        <h1 class="floating-heading">Tentang Kami</h1>
-        <p class="floating-subheading">Kami adalah tim digital solusi kreatif dan inovatif.</p>
-    </div>
+    <SectionHeading title="Tentang Kami" subtitle="Berkualitas, efisiensi, dan integritas dalam setiap produk dan layanan." />
+
+    <SectionServices />
+
 </template>
 
 <script>
+import SectionHeading from '@/components/SectionHeading.vue';
+import SectionServices from '@/components/SectionServices.vue';
+
 export default {
-    name: "About"
+    name: "About",
+    components: {
+        SectionHeading,
+        SectionServices,
+    }
 };
 </script>
 
@@ -17,8 +24,8 @@ export default {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    height: 100vh;
-    background: #f4f7fa;
+    height: 40vh;
+    background: #90aecc;
     text-align: center;
 }
 
@@ -39,18 +46,24 @@ export default {
 }
 
 @keyframes floatHeading {
-    0%, 100% {
+
+    0%,
+    100% {
         transform: translateY(0);
     }
+
     50% {
         transform: translateY(-8px);
     }
 }
 
 @keyframes floatSubheading {
-    0%, 100% {
+
+    0%,
+    100% {
         transform: translateY(0);
     }
+
     50% {
         transform: translateY(-4px);
     }

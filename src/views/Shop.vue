@@ -1,4 +1,7 @@
 <template>
+
+    <SectionHeading title="Dagangan Kami" subtitle="Berkualitas, terjangkau, cepat, dan terpercaya." />
+
     <div class="page">
         <h1 class="title">Shop</h1>
         <p class="subtitle">Temukan produk terbaik kami di sini.</p>
@@ -34,8 +37,13 @@
 </template>
 
 <script>
+import SectionHeading from '@/components/SectionHeading.vue';
+
 export default {
     name: "Shop",
+    components: {
+        SectionHeading
+    },
     data() {
         return {
             searchQuery: "",
