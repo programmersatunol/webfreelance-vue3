@@ -241,12 +241,13 @@ export default {
 
 .search-bar {
     width: 100%;
-    max-width: 400px;
-    padding: 12px;
-    font-size: 16px;
-    border-radius: 8px;
-    border: 1px solid #ccc;
-    margin-bottom: 32px;
+	padding: 12px 16px;
+	font-size: 16px;
+	border-radius: 8px;
+	border: 1px solid #ccc;
+	margin-bottom: 24px;
+	outline: none;
+	transition: border-color 0.3s;
 }
 
 .products-grid {

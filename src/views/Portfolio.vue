@@ -152,6 +152,7 @@ export default {
 	font-size: 2.5rem;
 	font-weight: bold;
 	margin-bottom: 0.25rem;
+	color: #21867a;
 }
 
 .subtitle {
