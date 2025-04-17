@@ -13,7 +13,7 @@
         <Services />
 
         <!-- Include the Pricing component -->
-        <Pricing />
+        <SectionBudgets />
 
         <Partnerships />
     </div>
@@ -22,15 +22,15 @@
 <script>
 import Services from "@/components/Services.vue";
 import GTranslate from "@/components/GTranslate.vue";
-import Pricing from "@/components/Pricing.vue";
 import Partnerships from "@/components/Partnerships.vue";
+import SectionBudgets from "@/components/SectionBudgets.vue";
 
 export default {
     name: "App",
     components: {
         Services,
         GTranslate,
-        Pricing,
+        SectionBudgets,
         Partnerships
     },
     methods: {
