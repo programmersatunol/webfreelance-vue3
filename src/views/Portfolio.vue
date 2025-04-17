@@ -14,7 +14,7 @@
 					<img :src="item.image" :alt="item.title" class="portfolio-image" />
 					<div class="portfolio-content">
 						<h3 class="portfolio-title">{{ item.title }}</h3>
-						<a :href="item.link" class="portfolio-link">Lihat Selengkapnya</a>
+						<router-link :to="item.link" class="portfolio-link">Lihat Selengkapnya</router-link>
 					</div>
 				</div>
 			</div>
