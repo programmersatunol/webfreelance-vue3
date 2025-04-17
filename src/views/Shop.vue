@@ -21,7 +21,7 @@
                         <button @click="addToCart(product)" class="add-to-cart">
                             Keranjang
                         </button>
-                        <router-link :to="`/produk/${product.id}`" class="detail-button">
+                        <router-link :to="`/produk/${product.link}`" class="detail-button">
                             Deskripsi
                         </router-link>
                     </div>
@@ -54,6 +54,7 @@ export default {
             products: [
                 {
                     id: 1,
+                    link: 'produk-a',
                     name: "Produk A",
                     image: "https://img.icons8.com/?size=100&id=Of4lZV2lwBQI&format=png&color=000000",
                     price: 150000,
@@ -61,6 +62,7 @@ export default {
                 },
                 {
                     id: 2,
+                    link: 'produk-b',
                     name: "Produk B",
                     image: "https://img.icons8.com/?size=100&id=Of4lZV2lwBQI&format=png&color=000000",
                     price: 200000,
@@ -68,6 +70,7 @@ export default {
                 },
                 {
                     id: 3,
+                    link: 'produk-c',
                     name: "Produk C",
                     image: "https://img.icons8.com/?size=100&id=Of4lZV2lwBQI&format=png&color=000000",
                     price: 180000,
@@ -75,6 +78,7 @@ export default {
                 },
                 {
                     id: 4,
+                    link: 'produk-d',
                     name: "Produk D",
                     image: "https://img.icons8.com/?size=100&id=Of4lZV2lwBQI&format=png&color=000000",
                     price: 250000,
@@ -82,6 +86,7 @@ export default {
                 },
                 {
                     id: 5,
+                    link: 'produk-e',
                     name: "Produk E",
                     image: "https://img.icons8.com/?size=100&id=Of4lZV2lwBQI&format=png&color=000000",
                     price: 100000,
@@ -89,6 +94,7 @@ export default {
                 },
                 {
                     id: 6,
+                    link: 'produk-f',
                     name: "Produk F",
                     image: "https://img.icons8.com/?size=100&id=Of4lZV2lwBQI&format=png&color=000000",
                     price: 300000,
@@ -96,6 +102,7 @@ export default {
                 },
                 {
                     id: 7,
+                    link: 'produk-g',
                     name: "Produk G",
                     image: "https://img.icons8.com/?size=100&id=Of4lZV2lwBQI&format=png&color=000000",
                     price: 275000,
@@ -103,6 +110,7 @@ export default {
                 },
                 {
                     id: 8,
+                    link: 'produk-h',
                     name: "Produk H",
                     image: "https://img.icons8.com/?size=100&id=Of4lZV2lwBQI&format=png&color=000000",
                     price: 220000,
@@ -110,6 +118,7 @@ export default {
                 },
                 {
                     id: 9,
+                    link: 'produk-u',
                     name: "Produk Utama",
                     image: "https://img.icons8.com/?size=100&id=Of4lZV2lwBQI&format=png&color=000000",
                     price: 190000,
@@ -118,6 +127,7 @@ export default {
 
                 {
                     id: 10,
+                    link: 'produk-u',
                     name: "Produk Utama",
                     image: "https://img.icons8.com/?size=100&id=Of4lZV2lwBQI&format=png&color=000000",
                     price: 190000,
@@ -125,6 +135,7 @@ export default {
                 },
                 {
                     id: 11,
+                    link: 'produk-u',
                     name: "Produk Utama",
                     image: "https://img.icons8.com/?size=100&id=Of4lZV2lwBQI&format=png&color=000000",
                     price: 190000,
@@ -132,6 +143,7 @@ export default {
                 },
                 {
                     id: 12,
+                    link: 'produk-u',
                     name: "Produk Utama",
                     image: "https://img.icons8.com/?size=100&id=Of4lZV2lwBQI&format=png&color=000000",
                     price: 190000,
