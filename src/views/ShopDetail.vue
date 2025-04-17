@@ -66,9 +66,61 @@ export default {
         addToCart() {
             alert(`Berhasil menambahkan ${this.quantity} ${this.product.name} ke keranjang!`);
         },
-        payNow() {
+        async payNow() {
             alert(`Melanjutkan ke pembayaran untuk ${this.quantity} ${this.product.name}.`);
+            try {
+                const totalPrice = this.product.price * this.quantity; // <-- calculate total price here!
+
+                const itemDetails = [{
+                    id: this.product.id.toString(),    // Make sure id is string
+                    price: this.product.price,          // Single item price
+                    quantity: this.quantity,            // How many items
+                    name: this.product.name,
+                    // brand: "Your Brand Name",            // You can customize this
+                    // category: "Your Category",           // You can customize this too
+                    // merchant_name: "Your Merchant",      // Your store name
+                    // tenor: "12",                         // Optional
+                    // code_plan: "000",                    // Optional
+                    // mid: "123456",                       // Optional
+                    // url: window.location.href            // Current product URL
+                }];
+
+                const response = await fetch('https://backend-snap-node.vercel.app/api/snap', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        transaction_details: {
+                            order_id: 'ORDER-ID-' + Date.now(),
+                            gross_amount: totalPrice,
+                        },
+                        item_details: itemDetails,
+                    }),
+                });
+
+                const data = await response.json();
+                const snapToken = data.token;
+
+                window.snap.pay(snapToken, {
+                    onSuccess: function (result) {
+                        console.log('Success', result);
+                    },
+                    onPending: function (result) {
+                        console.log('Pending', result);
+                    },
+                    onError: function (result) {
+                        console.error('Error', result);
+                    },
+                    onClose: function () {
+                        console.log('Payment popup closed');
+                    }
+                });
+            } catch (error) {
+                console.error('Payment error:', error);
+            }
         }
+
     }
 };
 </script>
