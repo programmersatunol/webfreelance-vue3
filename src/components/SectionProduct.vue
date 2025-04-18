@@ -25,7 +25,7 @@ export default {
         return {
             products: [
                 {
-                    name: "Digital Forensic Analyzer A",
+                    name: "Digital Forensic",
                     description: "Solusi unggul untuk investigasi digital cepat dan akurat.",
                     image: "https://cdn.nwe.io/files/x/66/5c/1874454b2f21bffc545c883b756c.jpg",
                     features: [
@@ -35,7 +35,7 @@ export default {
                     ],
                 },
                 {
-                    name: "Digital Forensic Workstation B",
+                    name: "Digital Forensic",
                     description: "Kekuatan pemrosesan tinggi untuk investigasi forensik tingkat lanjut.",
                     image: "https://cdn.nwe.io/files/x/66/5c/1874454b2f21bffc545c883b756c.jpg",
                     features: [
@@ -45,7 +45,7 @@ export default {
                     ],
                 },
                 {
-                    name: "Forensic Intelligence System C",
+                    name: "Forensic Intelligence",
                     description: "Menyatukan kecanggihan teknologi dan kemudahan pengoperasian forensik.",
                     image: "https://cdn.nwe.io/files/x/66/5c/1874454b2f21bffc545c883b756c.jpg",
                     features: [
@@ -55,7 +55,7 @@ export default {
                     ],
                 },
                 {
-                    name: "Mobile Forensic Suite D",
+                    name: "Forensic Intelligence",
                     description: "Mengoptimalkan produktivitas penyelidikan digital Anda di mana saja.",
                     image: "https://cdn.nwe.io/files/x/66/5c/1874454b2f21bffc545c883b756c.jpg",
                     features: [
@@ -73,12 +73,17 @@ export default {
 
 <style scoped>
 .section {
-    padding: 50px 20px;
-    /* max-width: 1200px; */
-    margin: 0 auto;
     background: linear-gradient(135deg, #f5f7fa, #c3cfe2);
     width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column; /* stack items vertically */
+    align-items: center;
+    box-sizing: border-box;
+    justify-content: center;
 }
+
+
 
 .section-title {
     text-align: center;
