@@ -1,219 +1,162 @@
 <template>
-    <section class="full-screen-section">
-      <div class="background"></div>
-      <div class="content">
-        <div class="left">
-          <h1>Ayo Mulai Sekarang!</h1>
-          <p>Gabung bersama ribuan orang lainnya dan raih kesuksesanmu hari ini. Klik tombol di bawah untuk memulai!</p>
-          <button @click="toggleForm">Mulai Sekarang</button>
+    <section class="section">
+        <h2 class="section-title">Solusi Produk Terbaik</h2>
+
+        <div class="cards-center">
+            <div v-for="(product, index) in products" :key="index" class="card">
+                <img :src="product.image" :alt="product.name" class="card-image" />
+                <div class="card-content">
+                    <h3 class="card-title">{{ product.name }}</h3>
+                    <p class="card-desc">{{ product.description }}</p>
+                    <ul class="features">
+                        <li v-for="(feature, idx) in product.features" :key="idx">{{ feature }}</li>
+                    </ul>
+                    <a href="#" class="button">Selengkapnya</a>
+                </div>
+            </div>
         </div>
-      </div>
-  
-      <!-- Modal Form -->
-      <div v-if="showForm" class="modal-overlay" @click.self="toggleForm">
-        <div class="modal">
-          <h2>Form Pendaftaran</h2>
-          <form class="cta-form" @submit.prevent="submitForm">
-            <input type="text" v-model="name" placeholder="Nama Lengkap" required />
-            <input type="email" v-model="email" placeholder="Email" required />
-            <textarea v-model="message" placeholder="Pesan Anda" rows="4" required></textarea>
-            <button type="submit">Kirim</button>
-          </form>
-          <button class="close-button" @click="toggleForm">Tutup</button>
-        </div>
-      </div>
     </section>
-  </template>
-  
-  <script setup>
-  import { ref } from 'vue'
-  
-  const showForm = ref(false)
-  const name = ref('')
-  const email = ref('')
-  const message = ref('')
-  
-  const toggleForm = () => {
-    showForm.value = !showForm.value
-  }
-  
-  const submitForm = () => {
-    alert(`Terima kasih, ${name.value}!\nEmail: ${email.value}\nPesan: ${message.value}`);
-    name.value = ''
-    email.value = ''
-    message.value = ''
-    showForm.value = false
-  }
-  </script>
-  
-  <style scoped>
-  .full-screen-section {
-    position: relative;
-    height: 50vh;
+</template>
+
+<script>
+export default {
+    name: "ProdukSection",
+    data() {
+        return {
+            products: [
+                {
+                    name: "Produk A",
+                    description: "Solusi terbaik untuk kebutuhan Anda.",
+                    image: "https://img.icons8.com/?size=100&id=19293&format=png&color=000000",
+                    features: ["Ringan", "Tahan Lama", "Garansi 2 Tahun"],
+                },
+                {
+                    name: "Produk B",
+                    description: "Pilihan pintar untuk profesional.",
+                    image: "https://img.icons8.com/?size=100&id=19293&format=png&color=000000",
+                    features: ["Performa Tinggi", "Desain Elegan", "Support 24/7"],
+                },
+                {
+                    name: "Produk C",
+                    description: "Gabungan teknologi dan kenyamanan.",
+                    image: "https://img.icons8.com/?size=100&id=19293&format=png&color=000000",
+                    features: ["Teknologi Canggih", "Pengoperasian Mudah", "Efisien Energi"],
+                },
+                {
+                    name: "Produk D",
+                    description: "Meningkatkan produktivitas Anda.",
+                    image: "https://img.icons8.com/?size=100&id=19293&format=png&color=000000",
+                    features: ["Produktif", "Kompatibel Banyak Perangkat", "Harga Terjangkau"],
+                },
+            ],
+        };
+    },
+};
+</script>
+
+<style scoped>
+.section {
+    padding: 50px 20px;
+    /* max-width: 1200px; */
+    margin: 0 auto;
+    background: linear-gradient(135deg, #f5f7fa, #c3cfe2);
+    width: 100%;
+}
+
+.section-title {
+    text-align: center;
+    font-size: 36px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 40px;
+}
+
+/* Ganti scroll-container menjadi cards-center */
+.cards-center {
     display: flex;
+    flex-wrap: wrap;
     justify-content: center;
-    align-items: center;
+    gap: 20px;
+}
+
+/* Card styling tetap sama */
+.card {
+    flex: 0 0 300px;
+    background: #fff;
+    border-radius: 16px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     overflow: hidden;
-  }
-  
-  .background {
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.card-image {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.card-content {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.card-title {
+    font-size: 24px;
+    font-weight: bold;
+    color: #222;
+    margin-bottom: 10px;
+}
+
+.card-desc {
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 20px;
+}
+
+.features {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 20px;
+}
+
+.features li {
+    font-size: 14px;
+    color: #444;
+    margin-bottom: 8px;
+    position: relative;
+    padding-left: 20px;
+}
+
+.features li::before {
+    content: "✔";
+    color: green;
     position: absolute;
-    top: 0;
     left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(to right, #a2aaad, #7fead5);
-    z-index: 0;
-  }
-  
-  .content {
-    position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 90%;
-    max-width: 1200px;
-    height: 80%;
-    background: white;
-    border-radius: 20px;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
-    overflow: hidden;
-    z-index: 1;
-  }
-  
-  .left {
-    flex-direction: column;
-    display: flex;
-    align-items: center;
-    text-align: center;
-    padding: 40px;
-  }
-  
-  .left h1 {
-    font-size: 2.5rem;
-    margin-bottom: 20px;
-  }
-  
-  .left p {
-    font-size: 1.2rem;
-    margin-bottom: 30px;
-  }
-  
-  .left button {
-    padding: 12px 24px;
-    font-size: 1rem;
-    background-color: #4facfe;
-    border: none;
-    border-radius: 8px;
+}
+
+.button {
+    background: #007bff;
     color: white;
-    cursor: pointer;
-    transition: background 0.3s;
-  }
-  
-  .left button:hover {
-    background-color: #00f2fe;
-  }
-  
-  /* Modal Styles */
-  .modal-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.6);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 10;
-  }
-  
-  .modal {
-    background: white;
-    padding: 30px;
-    border-radius: 12px;
-    width: 90%;
-    max-width: 400px;
+    padding: 12px;
     text-align: center;
-    position: relative;
-    animation: fadeIn 0.3s ease;
-  }
-  
-  .modal h2 {
-    margin-bottom: 20px;
-  }
-  
-  .cta-form {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-  }
-  
-  .cta-form input,
-  .cta-form textarea {
-    padding: 12px;
-    border-radius: 8px;
-    border: 1px solid #ccc;
-    font-size: 1rem;
-    width: 100%;
-    box-sizing: border-box;
-  }
-  
-  .cta-form button[type="submit"] {
-    padding: 12px;
-    font-size: 1rem;
-    background-color: #00c6ff;
-    border: none;
-    border-radius: 8px;
-    color: white;
-    cursor: pointer;
+    border-radius: 30px;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: bold;
     transition: background 0.3s;
-  }
-  
-  .cta-form button[type="submit"]:hover {
-    background-color: #0072ff;
-  }
-  
-  .close-button {
-    margin-top: 20px;
-    background: transparent;
-    border: none;
-    color: #0072ff;
-    cursor: pointer;
-    font-size: 1rem;
-    text-decoration: underline;
-  }
-  
-  /* Animation */
-  @keyframes fadeIn {
-    from {
-      opacity: 0;
-      transform: translateY(-20px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-  
-  /* Responsive */
-  @media (max-width: 768px) {
-    .content {
-      height: auto;
-      padding: 20px;
-    }
-  
-    .left h1 {
-      font-size: 2rem;
-    }
-  
-    .left p {
-      font-size: 1rem;
-    }
-  
-    .left button {
-      width: 100%;
-    }
-  }
-  </style>
-  
+    margin-top: auto;
+}
+
+.button:hover {
+    background: #0056b3;
+}
+</style>

@@ -1,6 +1,6 @@
 <template>
     <div id="app">
-        
+
         <section class="hero">
             <div class="hero-content">
                 <h1>Selamat Datang di Konsultan SatuNol</h1>
@@ -17,8 +17,10 @@
 
         <SectionProduct />
 
+        <SectionCTA />
+
         <Partnerships />
-        
+
     </div>
 </template>
 
@@ -27,6 +29,7 @@ import Services from "@/components/Services.vue";
 import GTranslate from "@/components/GTranslate.vue";
 import Partnerships from "@/components/Partnerships.vue";
 import SectionBudgets from "@/components/SectionBudgets.vue";
+import SectionCTA from "@/components/SectionCTA.vue";
 import SectionProduct from "@/components/SectionProduct.vue";
 
 export default {
@@ -36,6 +39,7 @@ export default {
         GTranslate,
         SectionBudgets,
         Partnerships,
+        SectionCTA,
         SectionProduct
     },
     methods: {
