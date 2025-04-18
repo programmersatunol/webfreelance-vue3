@@ -8,9 +8,9 @@
                 <div class="card-content">
                     <h3 class="card-title">{{ product.name }}</h3>
                     <p class="card-desc">{{ product.description }}</p>
-                    <ul class="features">
+                    <!-- <ul class="features">
                         <li v-for="(feature, idx) in product.features" :key="idx">{{ feature }}</li>
-                    </ul>
+                    </ul> -->
                     <a href="#" class="button">Selengkapnya</a>
                 </div>
             </div>
@@ -25,30 +25,47 @@ export default {
         return {
             products: [
                 {
-                    name: "Produk A",
-                    description: "Solusi terbaik untuk kebutuhan Anda.",
-                    image: "https://img.icons8.com/?size=100&id=19293&format=png&color=000000",
-                    features: ["Ringan", "Tahan Lama", "Garansi 2 Tahun"],
+                    name: "Digital Forensic Analyzer A",
+                    description: "Solusi unggul untuk investigasi digital cepat dan akurat.",
+                    image: "https://cdn.nwe.io/files/x/66/5c/1874454b2f21bffc545c883b756c.jpg",
+                    features: [
+                        "Algoritma Analisis Ringan & Cepat",
+                        "Struktur Data Tahan Lama & Aman",
+                        "Dukungan Garansi Teknologi 2 Tahun",
+                    ],
                 },
                 {
-                    name: "Produk B",
-                    description: "Pilihan pintar untuk profesional.",
-                    image: "https://img.icons8.com/?size=100&id=19293&format=png&color=000000",
-                    features: ["Performa Tinggi", "Desain Elegan", "Support 24/7"],
+                    name: "Digital Forensic Workstation B",
+                    description: "Kekuatan pemrosesan tinggi untuk investigasi forensik tingkat lanjut.",
+                    image: "https://cdn.nwe.io/files/x/66/5c/1874454b2f21bffc545c883b756c.jpg",
+                    features: [
+                        "Performa Proses Data Besar Super Cepat",
+                        "Desain Ergonomis & Tahan Lama",
+                        "Layanan Support Teknis 24/7 untuk Kasus Forensik",
+                    ],
                 },
                 {
-                    name: "Produk C",
-                    description: "Gabungan teknologi dan kenyamanan.",
-                    image: "https://img.icons8.com/?size=100&id=19293&format=png&color=000000",
-                    features: ["Teknologi Canggih", "Pengoperasian Mudah", "Efisien Energi"],
+                    name: "Forensic Intelligence System C",
+                    description: "Menyatukan kecanggihan teknologi dan kemudahan pengoperasian forensik.",
+                    image: "https://cdn.nwe.io/files/x/66/5c/1874454b2f21bffc545c883b756c.jpg",
+                    features: [
+                        "Engine Teknologi AI Forensik Terkini",
+                        "Antarmuka Operasi Mudah & User-Friendly",
+                        "Efisiensi Energi Tinggi untuk Operasi Panjang",
+                    ],
                 },
                 {
-                    name: "Produk D",
-                    description: "Meningkatkan produktivitas Anda.",
-                    image: "https://img.icons8.com/?size=100&id=19293&format=png&color=000000",
-                    features: ["Produktif", "Kompatibel Banyak Perangkat", "Harga Terjangkau"],
+                    name: "Mobile Forensic Suite D",
+                    description: "Mengoptimalkan produktivitas penyelidikan digital Anda di mana saja.",
+                    image: "https://cdn.nwe.io/files/x/66/5c/1874454b2f21bffc545c883b756c.jpg",
+                    features: [
+                        "Modul Analisis Produktivitas Maksimal",
+                        "Kompatibel Multi-Device (iOS, Android, Windows)",
+                        "Solusi Hemat Biaya Tanpa Kompromi Kualitas",
+                    ],
                 },
-            ],
+            ]
+
         };
     },
 };
