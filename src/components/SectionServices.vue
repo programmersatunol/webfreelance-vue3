@@ -35,7 +35,7 @@ export default {
                 },
                 {
                     title: "Pendekatan Personal",
-                    description: "Kami mendengarkan kebutuhan Anda dan memberikan solusi yang disesuaikan dengan tujuan dan anggaran Anda.",
+                    description: "Kami mendengarkan kebutuhan Anda dan memberikan solusi berkelanjutan yang disesuaikan dengan tujuan dan anggaran Anda.",
                     icon: "fas fa-handshake"
                 }
             ],
