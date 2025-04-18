@@ -75,15 +75,24 @@ export default {
 .section {
     background: linear-gradient(135deg, #f5f7fa, #c3cfe2);
     width: 100%;
-    height: 100vh;
+    min-height: 100vh;
+    /* bukan height, tapi min-height supaya fleksibel */
+    padding: 80px 20px;
     display: flex;
-    flex-direction: column; /* stack items vertically */
+    flex-direction: column;
     align-items: center;
     box-sizing: border-box;
     justify-content: center;
 }
 
-
+/* Responsive: di mobile, jangan 100vh */
+@media (max-width: 768px) {
+    .section {
+        min-height: auto;
+        /* biar mengikuti isi konten */
+        padding: 60px 20px;
+    }
+}
 
 .section-title {
     text-align: center;
