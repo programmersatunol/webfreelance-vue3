@@ -1,7 +1,6 @@
 <template>
 	<SectionHeading title="Portfolio Terbaik" subtitle="Cerminan komitmen kami terhadap kualitas dan inovasi." />
 
-
 	<section class="section-container">
 		<div class="page">
 			<h1 class="title">Portfolio</h1>
@@ -14,6 +13,7 @@
 					<img :src="item.image" :alt="item.title" class="portfolio-image" />
 					<div class="portfolio-content">
 						<h3 class="portfolio-title">{{ item.title }}</h3>
+						<p class="portfolio-value">{{ item.country }}</p>
 						<router-link :to="item.link" class="portfolio-link">Lihat Selengkapnya</router-link>
 					</div>
 				</div>
@@ -47,65 +47,74 @@ export default {
 				{
 					id: 1,
 					title: "Project A",
-					image:
-						"https://img.icons8.com/?size=100&id=19293&format=png&color=000000",
+					image: "https://img.icons8.com/?size=100&id=19293&format=png&color=000000",
 					link: "/portfolio/project-a",
+					value: "Rp 2 Miliar",
+					country: "Indonesia"
 				},
 				{
 					id: 2,
 					title: "Project B",
-					image:
-						"https://img.icons8.com/?size=100&id=19293&format=png&color=000000",
+					image: "https://img.icons8.com/?size=100&id=19293&format=png&color=000000",
 					link: "/portfolio/project-b",
+					value: "USD 500k",
+					country: "USA"
 				},
 				{
 					id: 3,
 					title: "Project C",
-					image:
-						"https://img.icons8.com/?size=100&id=19293&format=png&color=000000",
+					image: "https://img.icons8.com/?size=100&id=19293&format=png&color=000000",
 					link: "/portfolio/project-c",
+					value: "Rp 1.5 Miliar",
+					country: "Indonesia"
 				},
 				{
 					id: 4,
 					title: "Project D",
-					image:
-						"https://img.icons8.com/?size=100&id=19293&format=png&color=000000",
+					image: "https://img.icons8.com/?size=100&id=19293&format=png&color=000000",
 					link: "/portfolio/project-d",
+					value: "EUR 300k",
+					country: "Germany"
 				},
 				{
 					id: 5,
 					title: "Project E",
-					image:
-						"https://img.icons8.com/?size=100&id=19293&format=png&color=000000",
+					image: "https://img.icons8.com/?size=100&id=19293&format=png&color=000000",
 					link: "/portfolio/project-e",
+					value: "USD 1M",
+					country: "USA"
 				},
 				{
 					id: 6,
 					title: "Project F",
-					image:
-						"https://img.icons8.com/?size=100&id=19293&format=png&color=000000",
+					image: "https://img.icons8.com/?size=100&id=19293&format=png&color=000000",
 					link: "/portfolio/project-f",
+					value: "Rp 500 Juta",
+					country: "Indonesia"
 				},
 				{
 					id: 7,
 					title: "Project G",
-					image:
-						"https://img.icons8.com/?size=100&id=19293&format=png&color=000000",
+					image: "https://img.icons8.com/?size=100&id=19293&format=png&color=000000",
 					link: "/portfolio/project-g",
+					value: "GBP 400k",
+					country: "UK"
 				},
 				{
 					id: 8,
 					title: "Project H",
-					image:
-						"https://img.icons8.com/?size=100&id=19293&format=png&color=000000",
+					image: "https://img.icons8.com/?size=100&id=19293&format=png&color=000000",
 					link: "/portfolio/project-h",
+					value: "AUD 600k",
+					country: "Australia"
 				},
 				{
 					id: 9,
 					title: "Project I",
-					image:
-						"https://img.icons8.com/?size=100&id=19293&format=png&color=000000",
+					image: "https://img.icons8.com/?size=100&id=19293&format=png&color=000000",
 					link: "/portfolio/project-i",
+					value: "Rp 800 Juta",
+					country: "Indonesia"
 				},
 			],
 		};
@@ -212,6 +221,12 @@ export default {
 .portfolio-title {
 	font-size: 18px;
 	font-weight: 600;
+	margin-bottom: 6px;
+}
+
+.portfolio-value {
+	font-size: 14px;
+	color: #777;
 	margin-bottom: 10px;
 }
 
