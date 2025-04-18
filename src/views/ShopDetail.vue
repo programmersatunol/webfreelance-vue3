@@ -23,8 +23,16 @@
 
                 <div class="action-buttons">
                     <button @click="addToCart" class="add-to-cart">Tambah ke Keranjang</button>
-                    <button @click="payNow" class="pay-now">Bayar Sekarang</button>
+                    <button @click="payNow" class="pay-now" :disabled="loading">
+                        <template v-if="loading">
+                            <span class="spinner"></span> Loading...
+                        </template>
+                        <template v-else>
+                            Bayar Sekarang
+                        </template>
+                    </button>
                 </div>
+
 
                 <router-link to="/shop" class="back-button">
                     ← Kembali ke Shop
@@ -41,6 +49,7 @@ export default {
         return {
             quantity: 1,
             product: null,
+            loading: false, // <-- add loading state
             products: [
                 { id: 1, link: "produk-a", name: "Produk A", price: 150000, stock: 10, image: "https://img.icons8.com/?size=100&id=Of4lZV2lwBQI&format=png&color=000000", description: "Ini adalah produk A yang berkualitas tinggi." },
                 { id: 2, link: "produk-b", name: "Produk B", price: 200000, stock: 5, image: "https://img.icons8.com/?size=100&id=Of4lZV2lwBQI&format=png&color=000000", description: "Produk B sangat cocok untuk kebutuhan harian Anda." },
@@ -67,22 +76,15 @@ export default {
             alert(`Berhasil menambahkan ${this.quantity} ${this.product.name} ke keranjang!`);
         },
         async payNow() {
-            alert(`Melanjutkan ke pembayaran untuk ${this.quantity} ${this.product.name}.`);
+            this.loading = true; // <-- start loading
             try {
-                const totalPrice = this.product.price * this.quantity; // <-- calculate total price here!
+                const totalPrice = this.product.price * this.quantity;
 
                 const itemDetails = [{
-                    id: this.product.id.toString(),    // Make sure id is string
-                    price: this.product.price,          // Single item price
-                    quantity: this.quantity,            // How many items
+                    id: this.product.id.toString(),
+                    price: this.product.price,
+                    quantity: this.quantity,
                     name: this.product.name,
-                    // brand: "Your Brand Name",            // You can customize this
-                    // category: "Your Category",           // You can customize this too
-                    // merchant_name: "Your Merchant",      // Your store name
-                    // tenor: "12",                         // Optional
-                    // code_plan: "000",                    // Optional
-                    // mid: "123456",                       // Optional
-                    // url: window.location.href            // Current product URL
                 }];
 
                 const response = await fetch('https://backend-snap-node.vercel.app/api/snap', {
@@ -102,6 +104,7 @@ export default {
                 const data = await response.json();
                 const snapToken = data.token;
 
+                this.loading = false; // <-- stop loading before opening snap
                 window.snap.pay(snapToken, {
                     onSuccess: function (result) {
                         console.log('Success', result);
@@ -118,14 +121,38 @@ export default {
                 });
             } catch (error) {
                 console.error('Payment error:', error);
+                this.loading = false; // <-- make sure loading stops on error too
             }
         }
-
     }
 };
 </script>
 
+
 <style scoped>
+.spinner {
+    border: 3px solid rgba(255, 255, 255, 0.3);
+    border-top: 3px solid #ffffff;
+    border-radius: 50%;
+    width: 16px;
+    height: 16px;
+    animation: spin 1s linear infinite;
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 8px;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+
 .section-container {
     padding: 40px 20px;
     background-color: #f9fafb;
