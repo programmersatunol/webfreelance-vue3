@@ -15,7 +15,10 @@
         <!-- Include the Pricing component -->
         <SectionBudgets />
 
+        <SectionProduct />
+
         <Partnerships />
+        
     </div>
 </template>
 
@@ -24,6 +27,7 @@ import Services from "@/components/Services.vue";
 import GTranslate from "@/components/GTranslate.vue";
 import Partnerships from "@/components/Partnerships.vue";
 import SectionBudgets from "@/components/SectionBudgets.vue";
+import SectionProduct from "@/components/SectionProduct.vue";
 
 export default {
     name: "App",
@@ -31,7 +35,8 @@ export default {
         Services,
         GTranslate,
         SectionBudgets,
-        Partnerships
+        Partnerships,
+        SectionProduct
     },
     methods: {
         getStarted() {
