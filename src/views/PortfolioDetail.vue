@@ -58,7 +58,9 @@ export default {
 }
 
 .image-wrapper {
-    width: 100%;
+    width: 70%;
+    display: flex;
+    justify-content: center; /* Centering horizontally */
 }
 
 .detail-image {
