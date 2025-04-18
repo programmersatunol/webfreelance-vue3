@@ -12,8 +12,19 @@
                     semua informasi tentang kursus ini.
                 </p>
 
+                <!-- Tombol Bayar Midtrans Snap -->
+                <button v-if="course" @click="pay" class="pay-button" :disabled="isPaying">
+                    <template v-if="isPaying">
+                        <span class="spinner"></span> Memproses...
+                    </template>
+                    <template v-else>
+                        Bayar Sekarang
+                    </template>
+                </button>
+
+
                 <router-link to="/courses" class="back-button">
-                    ← Kembali ke Daftar Courses
+                    ← Kembali
                 </router-link>
             </div>
         </div>
@@ -21,6 +32,8 @@
 </template>
 
 <script>
+import axios from 'axios';
+
 export default {
     name: "CourseDetail",
     data() {
@@ -31,7 +44,9 @@ export default {
                 { id: 2, slug: "course-b", title: "Course B", price: 249000, image: "https://img.icons8.com/?size=100&id=19293&format=png&color=000000" },
                 { id: 3, slug: "course-c", title: "Course C", price: 149000, image: "https://img.icons8.com/?size=100&id=19293&format=png&color=000000" },
                 // Tambahkan course lainnya...
-            ]
+            ],
+            snapLoaded: false,
+            isPaying: false // << ini yang kurang!
         };
     },
     created() {
@@ -41,12 +56,99 @@ export default {
     methods: {
         formatPrice(value) {
             return new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR' }).format(value);
+        },
+        pay() {
+            this.isPaying = true; // Tambahkan ini saat klik tombol
+
+            if (!window.snap) {
+                const script = document.createElement('script');
+                script.src = "https://app.sandbox.midtrans.com/snap/snap.js";
+                script.setAttribute('data-client-key', 'SB-Mid-client-J3yhGCaFWOIEqoOp');
+                document.body.appendChild(script);
+                script.onload = () => {
+                    this.snapLoaded = true;
+                    this.startPayment();
+                };
+                script.onerror = () => {
+                    this.isPaying = false; // kalau gagal load snap.js
+                    alert('Gagal memuat Midtrans snap.js');
+                };
+            } else {
+                this.startPayment();
+            }
+        },
+        startPayment() {
+            const itemDetails = [{
+                id: this.course.id,
+                price: this.course.price,
+                quantity: 1,
+                name: this.course.title,
+            }];
+
+            axios.post('https://backend-snap-node.vercel.app/api/snap', {
+                transaction_details: {
+                    order_id: 'ORDER-ID-' + Date.now(),
+                    gross_amount: this.course.price,
+                },
+                item_details: itemDetails,
+            })
+                .then(response => {
+                    const token = response.data.token;
+                    window.snap.pay(token, {
+                        onSuccess: result => {
+                            console.log('Pembayaran berhasil', result);
+                            this.isPaying = false;
+                        },
+                        onError: error => {
+                            console.error('Pembayaran error', error);
+                            this.isPaying = false;
+                        },
+                        onClose: () => {
+                            alert('Anda menutup popup pembayaran.');
+                            this.isPaying = false;
+                        }
+                    });
+                })
+                .catch(error => {
+                    console.error('Gagal mendapatkan token pembayaran', error);
+                    this.isPaying = false;
+                });
         }
     }
 };
 </script>
 
 <style scoped>
+/* Tambahan CSS Spinner */
+.spinner {
+    border: 3px solid #fff;
+    border-top: 3px solid #ff7f50;
+    border-radius: 50%;
+    width: 16px;
+    height: 16px;
+    display: inline-block;
+    animation: spin 1s linear infinite;
+    margin-right: 8px;
+    vertical-align: middle;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+/* Saat tombol disabled */
+.pay-button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
+
 .section-container {
     padding: 40px 20px;
     background-color: #f9fafb;
@@ -95,14 +197,37 @@ export default {
     line-height: 1.6;
 }
 
+.pay-button,
 .back-button {
     display: inline-block;
-    padding: 10px 20px;
+    width: 200px;
+    text-align: center;
+    margin-bottom: 16px;
+}
+
+.pay-button {
+    background-color: #ff7f50;
+    color: white;
+    border: none;
+    padding: 12px 0;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.pay-button:hover {
+    background-color: #e76f51;
+}
+
+.back-button {
     background-color: #2a9d8f;
     color: white;
-    border-radius: 8px;
     text-decoration: none;
     font-weight: 600;
+    padding: 10px 0;
+    border-radius: 8px;
     transition: background-color 0.3s;
 }
 
@@ -118,6 +243,12 @@ export default {
 
     .course-price {
         font-size: 1.25rem;
+    }
+
+    .pay-button,
+    .back-button {
+        width: 100%;
+        max-width: 300px;
     }
 }
 </style>

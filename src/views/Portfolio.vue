@@ -4,7 +4,7 @@
 	<section class="section-container">
 		<div class="page">
 			<h1 class="title">Portfolio</h1>
-			<p class="subtitle">Ini adalah halaman portfolio kami.</p>
+			<p class="subtitle">Ini adalah karya terbaik kami.</p>
 
 			<input v-model="searchQuery" type="text" class="search-input" placeholder="Cari project..." />
 
