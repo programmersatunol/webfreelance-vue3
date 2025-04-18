@@ -13,8 +13,8 @@
                 </p>
 
                 <!-- Tombol Bayar Midtrans Snap -->
-                <button v-if="course" @click="pay" class="pay-button" :disabled="isPaying">
-                    <template v-if="isPaying">
+                <button v-if="course" @click="pay" class="pay-button" :disabled="loading">
+                    <template v-if="loading">
                         <span class="spinner"></span> Memproses...
                     </template>
                     <template v-else>
@@ -46,7 +46,7 @@ export default {
                 // Tambahkan course lainnya...
             ],
             snapLoaded: false,
-            isPaying: false // << ini yang kurang!
+            loading: false // << ini yang kurang!
         };
     },
     created() {
@@ -58,7 +58,7 @@ export default {
             return new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR' }).format(value);
         },
         pay() {
-            this.isPaying = true; // Tambahkan ini saat klik tombol
+            this.loading = true; // Tambahkan ini saat klik tombol
 
             if (!window.snap) {
                 const script = document.createElement('script');
@@ -70,7 +70,7 @@ export default {
                     this.startPayment();
                 };
                 script.onerror = () => {
-                    this.isPaying = false; // kalau gagal load snap.js
+                    this.loading = false; // kalau gagal load snap.js
                     alert('Gagal memuat Midtrans snap.js');
                 };
             } else {
@@ -97,21 +97,21 @@ export default {
                     window.snap.pay(token, {
                         onSuccess: result => {
                             console.log('Pembayaran berhasil', result);
-                            this.isPaying = false;
+                            this.loading = false;
                         },
                         onError: error => {
                             console.error('Pembayaran error', error);
-                            this.isPaying = false;
+                            this.loading = false;
                         },
                         onClose: () => {
                             alert('Anda menutup popup pembayaran.');
-                            this.isPaying = false;
+                            this.loading = false;
                         }
                     });
                 })
                 .catch(error => {
                     console.error('Gagal mendapatkan token pembayaran', error);
-                    this.isPaying = false;
+                    this.loading = false;
                 });
         }
     }

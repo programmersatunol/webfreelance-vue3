@@ -43,6 +43,8 @@
 </template>
 
 <script>
+import axios from 'axios';
+
 export default {
     name: "ProductDetail",
     data() {
@@ -75,55 +77,114 @@ export default {
         addToCart() {
             alert(`Berhasil menambahkan ${this.quantity} ${this.product.name} ke keranjang!`);
         },
-        async payNow() {
-            this.loading = true; // <-- start loading
-            try {
-                const totalPrice = this.product.price * this.quantity;
 
-                const itemDetails = [{
-                    id: this.product.id.toString(),
-                    price: this.product.price,
-                    quantity: this.quantity,
-                    name: this.product.name,
-                }];
+        payNow() {
+            this.loading = true; // Tambahkan ini saat klik tombol
 
-                const response = await fetch('https://backend-snap-node.vercel.app/api/snap', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify({
-                        transaction_details: {
-                            order_id: 'ORDER-ID-' + Date.now(),
-                            gross_amount: totalPrice,
-                        },
-                        item_details: itemDetails,
-                    }),
-                });
-
-                const data = await response.json();
-                const snapToken = data.token;
-
-                this.loading = false; // <-- stop loading before opening snap
-                window.snap.pay(snapToken, {
-                    onSuccess: function (result) {
-                        console.log('Success', result);
-                    },
-                    onPending: function (result) {
-                        console.log('Pending', result);
-                    },
-                    onError: function (result) {
-                        console.error('Error', result);
-                    },
-                    onClose: function () {
-                        console.log('Payment popup closed');
-                    }
-                });
-            } catch (error) {
-                console.error('Payment error:', error);
-                this.loading = false; // <-- make sure loading stops on error too
+            if (!window.snap) {
+                const script = document.createElement('script');
+                script.src = "https://app.sandbox.midtrans.com/snap/snap.js";
+                script.setAttribute('data-client-key', 'SB-Mid-client-J3yhGCaFWOIEqoOp');
+                document.body.appendChild(script);
+                script.onload = () => {
+                    this.snapLoaded = true;
+                    this.startPayment();
+                };
+                script.onerror = () => {
+                    this.loading = false; // kalau gagal load snap.js
+                    alert('Gagal memuat Midtrans snap.js');
+                };
+            } else {
+                this.startPayment();
             }
+        },
+        startPayment() {
+            const itemDetails = [{
+                id: this.product.id,
+                price: this.product.price,
+                quantity: this.quantity,
+                name: this.product.name,
+            }];
+
+            axios.post('https://backend-snap-node.vercel.app/api/snap', {
+                transaction_details: {
+                    order_id: 'ORDER-ID-' + Date.now(),
+                    gross_amount: this.product.price * this.quantity,
+                },
+                item_details: itemDetails,
+            })
+                .then(response => {
+                    const token = response.data.token;
+                    window.snap.pay(token, {
+                        onSuccess: result => {
+                            console.log('Pembayaran berhasil', result);
+                            this.loading = false;
+                        },
+                        onError: error => {
+                            console.error('Pembayaran error', error);
+                            this.loading = false;
+                        },
+                        onClose: () => {
+                            alert('Anda menutup popup pembayaran.');
+                            this.loading = false;
+                        }
+                    });
+                })
+                .catch(error => {
+                    console.error('Gagal mendapatkan token pembayaran', error);
+                    this.loading = false;
+                });
         }
+
+        // async payNow() {
+        //     this.loading = true; // <-- start loading
+        //     try {
+        //         const totalPrice = this.product.price * this.quantity;
+
+        //         const itemDetails = [{
+        //             id: this.product.id.toString(),
+        //             price: this.product.price,
+        //             quantity: this.quantity,
+        //             name: this.product.name,
+        //         }];
+
+        //         const response = await fetch('https://backend-snap-node.vercel.app/api/snap', {
+        //             method: 'POST',
+        //             headers: {
+        //                 'Content-Type': 'application/json',
+        //             },
+        //             body: JSON.stringify({
+        //                 transaction_details: {
+        //                     order_id: 'ORDER-ID-' + Date.now(),
+        //                     gross_amount: totalPrice,
+        //                 },
+        //                 item_details: itemDetails,
+        //             }),
+        //         });
+
+        //         const data = await response.json();
+        //         const snapToken = data.token;
+
+        //         this.loading = false; // <-- stop loading before opening snap
+        //         window.snap.pay(snapToken, {
+        //             onSuccess: function (result) {
+        //                 console.log('Success', result);
+        //             },
+        //             onPending: function (result) {
+        //                 console.log('Pending', result);
+        //             },
+        //             onError: function (result) {
+        //                 console.error('Error', result);
+        //             },
+        //             onClose: function () {
+        //                 console.log('Payment popup closed');
+        //             }
+        //         });
+        //     } catch (error) {
+        //         console.error('Payment error:', error);
+        //         this.loading = false; // <-- make sure loading stops on error too
+        //     }
+        // }
     }
 };
 </script>
