@@ -63,7 +63,7 @@ export default {
                 {
                     name: "Forensic Intelligence",
                     description: "Menyatukan kecanggihan teknologi dan kemudahan pengoperasian forensik.",
-                    image: "https://cdn.nwe.io/files/x/66/5c/1874454b2f21bffc545c883b756c.jpg",
+                    image: "https://miro.medium.com/v2/resize:fit:1039/1*gS1sM2qYOwS4Nr52FRoiFA.png",
                     features: [
                         "Engine Teknologi AI Forensik Terkini",
                         "Antarmuka Operasi Mudah & User-Friendly",
@@ -174,7 +174,7 @@ export default {
     padding: 20px;
     display: flex;
     flex-direction: column;
-    height: 100%;
+    /* height: 100%; */
 }
 
 .card-title {
