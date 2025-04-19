@@ -9,7 +9,7 @@ export default {
     // Initialize GTranslate settings after the component is mounted
     window.gtranslateSettings = {
       default_language: "id",
-      languages: ["id", "ar", "en", "ru"],
+      languages: ["id", "ar", "ru", "iw", "zh-CN", "en"],
       wrapper_selector: ".gtranslate_wrapper",
     };
 
@@ -22,6 +22,4 @@ export default {
 };
 </script>
 
-<style scoped>
-
-</style>
+<style scoped></style>
