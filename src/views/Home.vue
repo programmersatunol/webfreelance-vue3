@@ -17,6 +17,8 @@
 
         <SectionProduct />
 
+        <SectionSponsor />
+
         <SectionCTA />
 
         <Partnerships />
@@ -31,6 +33,7 @@ import Partnerships from "@/components/Partnerships.vue";
 import SectionBudgets from "@/components/SectionBudgets.vue";
 import SectionCTA from "@/components/SectionCTA.vue";
 import SectionProduct from "@/components/SectionProduct.vue";
+import SectionSponsor from "@/components/SectionSponsor.vue";
 
 export default {
     name: "App",
@@ -39,6 +42,7 @@ export default {
         GTranslate,
         SectionBudgets,
         Partnerships,
+        SectionSponsor,
         SectionCTA,
         SectionProduct
     },
