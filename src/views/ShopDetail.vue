@@ -81,8 +81,6 @@ export default {
         payNow() {
             this.loading = true; // Tambahkan ini saat klik tombol
 
-
-
             if (!window.snap) {
 
                 const isProduction = process.env.NODE_ENV === 'production';
