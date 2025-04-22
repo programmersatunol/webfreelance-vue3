@@ -81,11 +81,23 @@ export default {
         payNow() {
             this.loading = true; // Tambahkan ini saat klik tombol
 
+
+
             if (!window.snap) {
+
+                const isProduction = process.env.NODE_ENV === 'production';
+
                 const script = document.createElement('script');
-                script.src = "https://app.sandbox.midtrans.com/snap/snap.js";
-                script.setAttribute('data-client-key', 'SB-Mid-client-J3yhGCaFWOIEqoOp');
-                document.body.appendChild(script);
+                script.src = isProduction
+                    ? 'https://app.midtrans.com/snap/snap.js'
+                    : 'https://app.sandbox.midtrans.com/snap/snap.js';
+                script.setAttribute('data-client-key', isProduction
+                    ? 'Mid-client-MTOkMwkHo-GgALKS'
+                    : 'SB-Mid-client-J3yhGCaFWOIEqoOp');
+
+                document.head.appendChild(script);
+
+
                 script.onload = () => {
                     this.snapLoaded = true;
                     this.startPayment();
@@ -135,56 +147,6 @@ export default {
                     this.loading = false;
                 });
         }
-
-        // async payNow() {
-        //     this.loading = true; // <-- start loading
-        //     try {
-        //         const totalPrice = this.product.price * this.quantity;
-
-        //         const itemDetails = [{
-        //             id: this.product.id.toString(),
-        //             price: this.product.price,
-        //             quantity: this.quantity,
-        //             name: this.product.name,
-        //         }];
-
-        //         const response = await fetch('https://backend-snap-node.vercel.app/api/snap', {
-        //             method: 'POST',
-        //             headers: {
-        //                 'Content-Type': 'application/json',
-        //             },
-        //             body: JSON.stringify({
-        //                 transaction_details: {
-        //                     order_id: 'ORDER-ID-' + Date.now(),
-        //                     gross_amount: totalPrice,
-        //                 },
-        //                 item_details: itemDetails,
-        //             }),
-        //         });
-
-        //         const data = await response.json();
-        //         const snapToken = data.token;
-
-        //         this.loading = false; // <-- stop loading before opening snap
-        //         window.snap.pay(snapToken, {
-        //             onSuccess: function (result) {
-        //                 console.log('Success', result);
-        //             },
-        //             onPending: function (result) {
-        //                 console.log('Pending', result);
-        //             },
-        //             onError: function (result) {
-        //                 console.error('Error', result);
-        //             },
-        //             onClose: function () {
-        //                 console.log('Payment popup closed');
-        //             }
-        //         });
-        //     } catch (error) {
-        //         console.error('Payment error:', error);
-        //         this.loading = false; // <-- make sure loading stops on error too
-        //     }
-        // }
     }
 };
 </script>
