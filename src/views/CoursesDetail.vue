@@ -108,6 +108,7 @@ export default {
                         onSuccess: result => {
                             console.log('Pembayaran berhasil', result);
                             this.loading = false;
+                            window.location.href = '/payment-success'; // Redirect to success page
                         },
                         onError: error => {
                             console.error('Pembayaran error', error);
