@@ -83,18 +83,7 @@ export default {
 
             if (!window.snap) {
 
-                const isProduction = true;
-
-                const script = document.createElement('script');
-                script.src = isProduction
-                    ? 'https://app.midtrans.com/snap/snap.js'
-                    : 'https://app.midtrans.com/snap/snap.js';
-                script.setAttribute('data-client-key', isProduction
-                    ? 'Mid-client-MTOkMwkHo-GgALKS'
-                    : 'SB-Mid-client-J3yhGCaFWOIEqoOp');
-
-                document.head.appendChild(script);
-
+                // state
 
                 script.onload = () => {
                     this.snapLoaded = true;
