@@ -24,7 +24,7 @@
       <div class="footer-section">
         <h3>Contact Us</h3>
         <p>Email us at:</p>
-        <a href="mailto:info@example.com" class="email-link">info@example.com</a>
+        <a href="mailto:satpam@satunoldigitalsolusi.web.id" class="email-link"> satpam@satunoldigitalsolusi.web.id </a>
       </div>
 
       <!-- Page Links -->
