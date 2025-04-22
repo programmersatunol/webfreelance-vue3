@@ -61,8 +61,19 @@ export default {
             this.loading = true; // Tambahkan ini saat klik tombol
 
             if (!window.snap) {
-                
-                // state
+
+                const isProduction = true;
+
+                const script = document.createElement('script');
+                script.src = isProduction
+                    ? 'https://app.midtrans.com/snap/snap.js'
+                    : 'https://app.midtrans.com/snap/snap.js';
+                script.setAttribute('data-client-key', isProduction
+                    ? 'Mid-client-MTOkMwkHo-GgALKS'
+                    : 'SB-Mid-client-J3yhGCaFWOIEqoOp');
+
+                document.head.appendChild(script);
+
 
                 script.onload = () => {
                     this.snapLoaded = true;
