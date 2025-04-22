@@ -67,7 +67,7 @@ export default {
                 const script = document.createElement('script');
                 script.src = isProduction
                     ? 'https://app.midtrans.com/snap/snap.js'
-                    : 'https://app.sandbox.midtrans.com/snap/snap.js';
+                    : 'https://app.midtrans.com/snap/snap.js';
                 script.setAttribute('data-client-key', isProduction
                     ? 'Mid-client-MTOkMwkHo-GgALKS'
                     : 'SB-Mid-client-J3yhGCaFWOIEqoOp');
