@@ -33,16 +33,20 @@
         <GTranslate />
 
         <router-view />
+
+        <FooterComponent />
     </div>
 </template>
 
 <script>
 import GTranslate from './components/GTranslate.vue';
+import FooterComponent from './components/FooterComponent.vue';
 
 export default {
     name: "App",
     components: {
-        GTranslate
+        GTranslate,
+        FooterComponent
     },
     computed: {
         isDevelopment() {

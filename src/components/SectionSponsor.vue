@@ -30,7 +30,8 @@ export default {
         return {
             logos: [
                 'https://ncsc-website-prod-assets.s3.me-south-1.amazonaws.com/assets/images/logo_3e9732a294.png',
-                'https://www.bahrain.bh/wps/contenthandler/en/!ut/p/digest!VjBueQcDg9ZtERuc1v4-zw/dav/fs-type1/themes/BahrainGovPortalThemeDX95/assets/images/Logo_en.svg'
+                'https://www.bahrain.bh/wps/contenthandler/en/!ut/p/digest!VjBueQcDg9ZtERuc1v4-zw/dav/fs-type1/themes/BahrainGovPortalThemeDX95/assets/images/Logo_en.svg',
+                'https://www.sangfor.com/sites/default/files/Primary%20Sangfor%20Logo.png'
             ],
             visibleCount: 6,
         };
@@ -105,7 +106,7 @@ export default {
 .logo-card {
     width: 220px;
     padding: 16px;
-    background: #ffffff;
+    background: #9cbcc7;
     border-radius: 16px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
     transition: box-shadow 0.3s ease;
