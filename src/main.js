@@ -14,7 +14,7 @@ app.use(router)
 import { configure } from "vue-gtag";
 
 configure({
-  tagId: "G-7245R3C4SW"
+  tagId: "G-4M0PHDCBVZ"
 })
 
 app.mount('#app')
